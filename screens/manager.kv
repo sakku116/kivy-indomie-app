@@ -1,0 +1,51 @@
+# (parent path dimulai dari folder main.py)
+######## TEMPLATES ########
+#:include templates/chooser_button.kv
+#:include templates/my_card.kv
+#:include templates/my_indicator.kv
+#:include templates/read_more_btn.kv
+
+######## SCREENS ########
+#:include screens/main_screen.kv
+#:include screens/content_screen.kv
+
+##############################
+# include file yang berisi class untuk dipanggil sebagai referensi -
+# sama saja menulis ulang class seperti ReadMoreButton -
+# dibawah.
+
+# berbeda dengan import -
+# include berfungsi seperti artinya yaitu memasukkan -
+# dengan include kita bisa membuat class di python file yang sama untuk controll -
+# class kv yang sudah kita buat seperti ChooserButton, MyCard
+
+# #:include {nama file atau filepath}.kv
+
+##############################
+<Manager>
+    FloatLayout:
+        size: root.width, root.height
+
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        BoxLayout:
+            id: layout_for_main
+
+        BoxLayout:
+            id: layout_for_content
+
+        BoxLayout:
+            size_hint: None, None
+            width: self.minimum_width
+            height: '65px'
+            pos_hint: {'center_x':.5, 'down':1}
+
+            ReadMoreBtn:
+                id: float_btn
+                text: 'Lihat Selengkapnya'
+                icon: 'assets/arrow.png'

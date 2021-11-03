@@ -1,0 +1,16 @@
+'selamat pagi' = roboto rgba(0, 0, 0, 0.6)
+'andre rio' = oswald
+title = poppins
+chooser button  = roboto rgba(27, 23, 23, 1)
+card title = poppins
+goreng = roboto rgba(129, 0, 0, 1)
+rating = roboto rgba(0, 0, 0, 0.6)
+float button = poppins rgba(255, 255, 255, 1)
+
+
+MAIN SCREEN:
+height: 896px;
+width: 414px;
+left: 7030px;
+top: 802px;
+border-radius: 30px;

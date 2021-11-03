@@ -1,0 +1,83 @@
+<ChooserButton>
+    # @ToggleButton
+    # tidak perlu ditambah @ToggleButton karena di py file sudah -
+    # di declare 'class ChooserButton(ToggleButton)'
+
+    group: 'cbtn'
+    ########
+    text: 'my_button'
+    icon: ''
+    ########
+    color: (0,0,0,0)
+
+    size_hint: None, None
+    width: '170dp'
+    height: '37.5dp'
+    center_x: .5
+
+    on_press:
+        self.my_color = (221/255, 222/255, 204/255,1) if self.state == 'down' else self.my_color
+    on_release: root.animate_touch(self.state)
+
+    my_radius: 5
+    my_color: (255/255, 224/255, 224/255, 1)
+    my_back_opacity: 0
+
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        # background for pressed button
+        Color:
+            rgba: (206/255, 18/255, 18/255,0 if self.state == 'normal' else 1)
+        RoundedRectangle:
+            size: [self.width-15, self.height]
+            pos: [self.center_x - self.width/2.3, self.y-4.2]
+            radius: [self.my_radius]
+
+        # main
+        Color:
+            rgba: self.my_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [self.my_radius]
+
+        # border for pressed button
+        Color:
+            rgba: (206/255, 18/255, 18/255, 0 if self.state == 'normal' else 1)
+        Line:
+            #width: 1.0000005
+            rounded_rectangle: self.x, self.y, self.width, self.height, self.my_radius
+
+    BoxLayout:
+        padding: [5,0,0,0]
+        orientation: 'horizontal'
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout: # ICON
+            padding: 4
+
+            size_hint: None, None
+            width: '35px'
+            height: '29px'
+            pos_hint: {'center_y':.5}
+
+            canvas.before:
+                Color:
+                    rgba: (1,1,1,1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [root.my_radius]
+
+            Image:
+                source: root.icon
+                pos: self.parent.pos
+                size: self.parent.size
+
+        Label: # TEXT
+            text: root.text
+            font_size: '13px'
+            font_name: 'assets/font/Roboto/Roboto-Medium.ttf'
+            color: (27/255, 23/255, 23/255, 1)

@@ -1,0 +1,246 @@
+<MainScreen>
+    GridLayout:
+        id: main_screen
+        cols: 1
+        size: root.width, root.height
+
+        BoxLayout: # HEADER
+            orientation: 'horizontal'
+            padding: 10
+
+            size_hint: (1, None)
+            height: '75px'
+
+            BoxLayout:
+                orientation: 'vertical'
+                padding: [10,0,0,0]
+
+                FloatLayout:
+                    Label:
+                        text: 'Selamat pagi,'
+
+                        font_size: '11.5px'
+                        font_name: 'assets/font/Roboto/Roboto-Regular.ttf'
+                        color: (0, 0, 0, 0.6)
+
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'bottom'
+
+                        size_hint: 1, None
+                        height: self.font_size *2
+                        pos_hint: {'top':1, 'center_x':.5}
+
+                    Label:
+                        text: 'Andre Rio!'
+
+                        font_size: '20px'
+                        font_name: 'assets/font/Oswald-VariableFont_wght.ttf'
+                        color: (0,0,0,1)
+
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'top'
+
+                        size_hint: 1, None
+                        height: self.font_size*2
+                        pos_hint: {'center_y':.3, 'center_x':.5}
+
+
+            # PROFILE PICTURE
+            BoxLayout: # untuk menetapkan profil pict selalu di kanan
+                padding: [0,0,5,0]
+
+                FloatLayout:
+                    Image:
+                        source: 'assets/profile pict.png'
+
+                        size_hint: None, None
+                        width: '37.5px'
+                        height: '37.5px'
+                        pos_hint: {'center_y': .5 , 'right':1}
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
+            # MAIN CONTENT
+            BoxLayout:
+                orientation: 'vertical'
+
+                id: content_id
+                padding: [0,'5px',0,0] # left, top, right, bottom
+
+                size_hint: 1, None
+                height: self.minimum_height
+                # mengambil minimum dari height, agar container height fit dengan element didalamnya.
+                # karena elemen didalamnya size hint y none, yang akan membuat semua element
+                # stuck dibawah - kiri dari boxlayout
+                # maka ukuran boxlayout harus fit dengan semua elemen didalamnya
+                pos_hint: {'center_y':1}
+
+                # TITLE
+                BoxLayout:
+                    padding: ['25px',0,'25px',0]
+                    size_hint: 1, None
+                    height: self.minimum_height
+
+                    Label:
+                        text: 'Paling Laris, Soal Rasa Gak Pernah Bohong !'
+
+                        font_name: 'assets/font/Poppins/Poppins-Bold.ttf'
+                        font_size: '19px'
+                        color: (0,0,0,1)
+
+                        text_size: self.size # untuk menempelkan text ke paling kiri label (bukan tengah)
+                        halign: 'left'
+                        valign: 'top'
+
+                        size_hint: 1, None
+                        height: '65px'
+
+                # HORIZONTAL BUTTON CHOOSER
+                BoxLayout:
+                    size_hint: 1, None
+                    height: '75px'
+                    pos_hint: {'center_y':1}
+
+                    ScrollView:
+                        id: chooser_btn_scrollview
+                        do_scroll_x: True
+                        do_scroll_y: False
+
+                        # overscroll efek, default = DumpedScrollEffect
+                        effect_cls: 'ScrollEffect' # (tanpa efek)
+
+                        bar_color: (1,1,1,0)
+                        bar_inactive_color: (1,1,1,0)
+
+                        BoxLayout:
+                            id: horizontal_button
+                            orientation: 'horizontal'
+                            padding: [25,0,25,0]
+                            spacing: '25px'
+
+                            size_hint: None, None
+                            height: '50px'
+                            width: self.minimum_width # untuk meberi ukuran sesuai dengan berapa banyak elemen didalamnya
+                            # properti minimum_width dapat digunakan selain pada label
+
+                            ChooserButton:
+                                id: first_btn
+                                text: 'Rasa Original'
+                                icon: 'assets/button_icon/rasa_ori.png'
+
+                                on_press:
+                                    card_carousel.load_slide(card_carousel.slides[0])
+                                    root.activate_indicator(0)
+
+                            ChooserButton:
+                                id: second_btn
+                                text: 'Rasa Pedas'
+                                icon: 'assets/button_icon/pedas.png'
+
+                                on_press:
+                                    card_carousel.load_slide(card_carousel.slides[1])
+                                    root.activate_indicator(1)
+
+                            ChooserButton:
+                                id: third_btn
+                                text: 'Rasa Kari Ayam'
+                                icon: 'assets/button_icon/kari_ayam.png'
+
+                                on_press:
+                                    card_carousel.load_slide(card_carousel.slides[2])
+                                    root.activate_indicator(2)
+
+                            ChooserButton:
+                                id: fourth_btn
+                                text: 'Rasa Rendang'
+                                icon: 'assets/button_icon/rendang.png'
+
+                                on_press:
+                                    card_carousel.load_slide(card_carousel.slides[3])
+                                    root.activate_indicator(3)
+
+                # CARD
+                BoxLayout:
+                    size_hint: 1, None
+                    height: '330px'
+                    pos_hint: {'center_x': .5}
+
+                    Carousel:
+                        direction: 'right'
+                        id: card_carousel
+                        pos_hint: {'center_x':.5, 'center_y': .5}
+
+                        anim_move_duration: .4
+                        anim_type: 'out_circ'
+
+                        on_current_slide:
+                            # menetralkan semua choser btn ke normal
+                            for i in range(0, len(root.button_list)): root.button_list[i].state = 'normal'
+                            # dan mengubah state choser btn[index] ke down
+                            root.button_list[self.index].state = 'down'
+                            # control indicator
+                            root.activate_indicator(self.index)
+                            # scrap element dari card terkini
+                            root.current_product_element(self.slides[self.index].product_preview_path, self.slides[self.index].title_text, self.slides[self.index].type_text, self.slides[self.index].rating)
+
+                        MyCard:
+                            id: first_card
+                            title_text: 'Indomie Original'
+
+                            type_text: 'GORENG'
+                            product_preview_path: 'assets/indomies/indomie-original.png'
+                            rating: '4.5'
+
+                        MyCard:
+                            id: second_card
+                            title_text: 'Indomie Pedas'
+
+                            type_text: 'GORENG'
+                            product_preview_path: 'assets/indomies/indomie-pedas.png'
+                            rating: '4'
+
+                        MyCard:
+                            id: third_card
+                            title_text: 'Indomie Kari Ayam'
+
+                            type_text: 'KUAH'
+                            product_preview_path: 'assets/indomies/indomie-kari-ayam.png'
+                            rating: '3.5'
+
+                        MyCard:
+                            id: fourth_card
+                            title_text: 'Indomie Rendang'
+
+                            type_text: 'GORENG'
+                            product_preview_path: 'assets/indomies/indomie-rendang.png'
+                            rating: '5'
+
+                # CARD INDEX INDICATOR
+                FloatLayout:
+                    padding: [25,0,25,0]
+                    size_hint: 1, None
+                    height: '35px'
+
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        spacing: '7px'
+
+                        size_hint: None, None
+                        width: self.minimum_width
+                        height: self.minimum_height
+                        pos_hint: {'center_x': .5, 'down':1}
+
+                        MyIndicator:
+                            id: first_indicator
+                        MyIndicator:
+                            id: second_indicator
+                        MyIndicator:
+                            id: third_indicator
+                        MyIndicator:
+                            id: fourth_indicator
+
+        # FLOATING BUTTON (read more)

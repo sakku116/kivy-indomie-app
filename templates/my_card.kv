@@ -1,0 +1,129 @@
+<MyCard@FloatLayout>:
+    # @FloatLayout
+    size_hint: None, 1
+    width: '330px'
+    pos_hint: {'center_x': .5}
+
+    # set attribut untuk diubah saat class dipanggil
+    # dan diambail untuk child class
+    ########## ELEMEN YANG DIBUTUHKAN ##########
+    title_text: ''
+    type_text: ''
+    rating: ''
+    product_preview_path: ''
+    ############################################
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [15,10,15,0]
+
+        size_hint: None, None
+        width: '260px'
+        height: '290px'
+        pos_hint: {'center_x': .5-self.my_elevation/700, 'center_y': .5}
+
+        my_radius: 10
+        my_elevation: 16
+
+        background_normal: ''
+        background_color: (0,0,0,0)
+        canvas.before:
+            # back
+            Color:
+                rgba: (206/255, 18/255, 18/255, 1)
+            RoundedRectangle:
+                size: [self.width-self.width/20, self.height]
+                pos: [self.x+self.my_elevation*1.9, self.y-self.my_elevation]
+
+            # main
+            Color:
+                rgba: (255/255, 224/255, 224/255, 1)
+            RoundedRectangle:
+                size: self.size
+                pos: [self.x, self.y]
+                radius: [self.my_radius]
+
+            # border
+            Color:
+                rgba: (206/255, 18/255, 18/255, 1)
+            Line:
+                width: 1.0000005
+                rounded_rectangle: self.x, self.y, self.width, self.height, self.my_radius
+
+        # IMAGE
+        BoxLayout:
+            size_hint: 1, None
+            height: '175px'
+
+            Image:
+                source: root.product_preview_path
+
+        BoxLayout:
+            orientation: 'horizontal'
+
+            # TEXT
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 4
+                padding: [6,0,0,0]
+
+                Label: # nama varian
+                    id: title_text
+                    text: root.title_text # text dari parent class
+
+                    font_name: 'assets/font/Poppins/Poppins-Bold.ttf'
+                    color: (0,0,0,.8)
+                    font_size: '15px'
+                    text_size: self.width, self.height
+                    valign: 'bottom'
+                    halign: 'left'
+
+                    size_hint_y: None
+                    height: '30px'
+
+                Label: # tipe varian
+                    text: root.type_text # text dari parent class
+
+                    font_name: 'assets/font/Roboto/Roboto-Bold.ttf'
+                    color: (129/255, 0, 0, 1)
+                    font_size: '13.5px'
+                    text_size: self.width, self.height
+                    valign: 'top'
+                    halign: 'left'
+
+            # RATING
+            BoxLayout:
+                padding: [0,10,10,0]
+
+                size_hint: None, 1
+                width: self.minimum_width
+                pos_hint: {'right':1}
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 3
+
+                    size_hint: None, None
+                    width: self.minimum_width
+                    height: '20px'
+                    pos_hint: {'top':1, 'right':1}
+
+                    Image:
+                        source: 'assets/star.png'
+
+                        size_hint: None, None
+                        width: '20px'
+                        height: '20px'
+
+                    Label:
+                        text: root.rating
+
+                        color: (0,0,0,.6)
+                        font_size: '14px'
+                        font_name: 'assets/font/Roboto/Roboto-Medium.ttf'
+
+                        size: self.texture_size
+                        size_hint: None, None
+                        width: '20px'
+                        height: '20px'
+                        pos_hint: {'center_y':.5}

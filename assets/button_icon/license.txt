@@ -1,0 +1,6 @@
+
+chicken.png = https://www.flaticon.com/premium-icon/chicken_2195195
+rasa_ori.png = https://www.flaticon.com/premium-icon/chicken_2936419
+rendang.png = https://www.flaticon.com/free-icon/beef_4976401
+kari_ayam.png = https://www.flaticon.com/premium-icon/durban-chicken-curry_3400896
+pedas.png = https://www.flaticon.com/free-icon/chili_1038609

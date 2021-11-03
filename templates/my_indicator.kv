@@ -1,0 +1,18 @@
+<MyIndicator@Label>
+    background_normal: ''
+    background_color: (0,0,0,0)
+
+    size_hint: None, None
+    width: '8px'
+    height: '8px'
+
+    my_color: (0,0,0,.2)
+
+    canvas.before:
+        # main
+        Color:
+            rgba: self.my_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [self.height/2]
