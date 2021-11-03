@@ -11,7 +11,6 @@ from kivy.animation import Animation
 from kivy.properties import StringProperty
 
 from kivy.uix.screenmanager import Screen
-from kivy.uix.behaviors import TouchRippleBehavior
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.button import Button
 from kivy.uix.image import Image
@@ -35,22 +34,6 @@ class ChooserButton(ToggleButton):
             anim.start(self)
         else:
             pass
-
-class RippleButton(TouchRippleBehavior, Button):
-    def on_touch_down(self, touch):
-        collide_point = self.collide_point(touch.x, touch.y)
-        if collide_point:
-            touch.grab(self)
-            self.ripple_show(touch)
-            return True
-        return False
-
-    def on_touch_up(self, touch):
-        if touch.grab_current is self:
-            touch.ungrab(self)
-            self.ripple_fade()
-            return True
-        return False
 
 class Manager(Screen):
     def __init__(self, **kwargs):
@@ -134,7 +117,10 @@ class Manager(Screen):
         self.ids.float_btn.unbind(on_release = self.goto_content_screen)
 
     def goto_main_screen(self, *args):
-        screen = self.first_screen.add_widget(self.main_screen)
+        try:
+            screen = self.first_screen.add_widget(self.main_screen)
+        except:
+            pass
 
         # animate content screen saat disapear
         anim = Animation(
