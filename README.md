@@ -1,2 +1,3 @@
 # Indomie-App
-My first slicing project
+### preview
+Ini adalah proyek slicing pertama yang saya buat.
