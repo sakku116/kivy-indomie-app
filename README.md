@@ -2,7 +2,7 @@
 This is my first slicing app project.
 ## preview
 <img src="/preview/image.PNG" alt="drawing" width="300"/> <img src="/preview/image2.PNG" alt="drawing" width="300"/>
-## Compile Issue
+## How To Run the Code
 kivy can be used on multiple platforms, to run the code on desktop just run it with python:
 ``` 
 python main.py
