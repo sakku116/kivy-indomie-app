@@ -1,6 +1,7 @@
 # Indomie-App
 This is my first slicing app project.
 ## preview
+![Preview](/preview/image1.PNG)
 ![Preview](/preview/image2.PNG)
 ## Requires
 - python 3.6+
