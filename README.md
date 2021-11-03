@@ -3,11 +3,11 @@ This is my first slicing app project.
 ## preview
 <img src="/preview/image.PNG" alt="drawing" width="300"/> <img src="/preview/image2.PNG" alt="drawing" width="300"/>
 ## Compile Issue
-kivy can be used on multiple platforms, to run the code on desktop just compile it with python:
+kivy can be used on multiple platforms, to run the code on desktop just run it with python:
 ``` 
 python main.py
 ```
-but to compile on mobile you need to use the Kivy Launcher app.
+but to run this code on mobile you need to use the Kivy Launcher app.
 
 >you can use Pyinstaller Package to package this app as standalone app on windows, but you need Buildozier to package this app on android.
 ## Credits
