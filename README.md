@@ -1,6 +1,6 @@
 # Indomie-App
 This is my first slicing app project.
-## preview
+### Preview
 <img src="/preview/image.PNG" alt="drawing" width="300"/> <img src="/preview/image2.PNG" alt="drawing" width="300"/>
 ## Requires
 - python 3.6+
