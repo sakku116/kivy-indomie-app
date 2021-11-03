@@ -1,7 +1,7 @@
 # Indomie-App
 This is my first slicing app project.
-![Preview](/preview/image1.png)
-![Preview](/preview/image2.png)
+![Preview](/preview/image1.PNG)
+![Preview](/preview/image2.PNG)
 ## Requires
 - python 3.6+
 - kivy 2.0.0
