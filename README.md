@@ -7,9 +7,9 @@ kivy can be used on multiple platforms, to run the code on desktop just run it w
 ``` 
 python main.py
 ```
-but to run this code on mobile you need to use the Kivy Launcher app.
+but to run this code on mobile you need to use the `Kivy Launcher` app.
 
->you can use Pyinstaller Package to package this app as standalone app on windows, but you need Buildozier to package this app on android.
+>you can use `Pyinstaller package` to package this app as standalone app on windows, but you need `Buildozer` to package this app on android.
 ## Credits
 1. UI/UX design by [Andre Rio](https://github.com/andregans)
 2. some icons from [Flaticon](https://www.flaticon.com/) (see `assets/button_icon/credits.txt` for details)
