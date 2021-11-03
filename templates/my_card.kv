@@ -15,7 +15,7 @@
 
     BoxLayout:
         orientation: 'vertical'
-        padding: [15,10,15,0]
+        padding: [10,6,8,0]
 
         size_hint: None, None
         width: '260px'
@@ -50,13 +50,34 @@
                 width: 1.0000005
                 rounded_rectangle: self.x, self.y, self.width, self.height, self.my_radius
 
-        # IMAGE
-        BoxLayout:
+        # PICT
+        FloatLayout:
+            pos: self.parent.pos
             size_hint: 1, None
-            height: '175px'
+            height: '185px'
 
             Image:
                 source: root.product_preview_path
+                pos: self.parent.pos
+                size_hint: None, None
+                width: '165px'
+                height: self.width
+                pos_hint: {'center_x':.5, 'center_y':.5}
+
+            BoxLayout:
+                size_hint: None, None
+                width: self.minimum_width
+                height: self.minimum_height
+                pos_hint: {'top':1, 'right':1}
+
+                Image:
+                    source: 'assets/heart.png'
+                    pos: self.parent.pos
+                    size_hint: None, None
+                    allow_stretch: True
+                    width: '60px'
+                    height: self.width
+                    pos_hint: {'top':1, 'right':1}
 
         BoxLayout:
             orientation: 'horizontal'
@@ -65,7 +86,7 @@
             BoxLayout:
                 orientation: 'vertical'
                 spacing: 4
-                padding: [6,0,0,0]
+                padding: [13,0,0,0]
 
                 Label: # nama varian
                     id: title_text
@@ -93,7 +114,7 @@
 
             # RATING
             BoxLayout:
-                padding: [0,10,10,0]
+                padding: [0,10,17,0]
 
                 size_hint: None, 1
                 width: self.minimum_width
