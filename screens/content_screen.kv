@@ -1,3 +1,4 @@
+
 <ContentScreen>
     FloatLayout:
         id: content_screen_base
@@ -36,7 +37,7 @@
                     # PICT
                     BoxLayout:
                         size_hint_y: None
-                        height: '260px'
+                        height: 260
 
                         Image:
                             id: content_pict
@@ -53,7 +54,7 @@
                         spacing: 10
 
                         size_hint_y: None
-                        height: '500px'
+                        height: 500
 
                         canvas.before:
                             Color:
@@ -78,13 +79,13 @@
 
                                 font_name: 'assets/font/Poppins/Poppins-Bold.ttf'
                                 color: (0,0,0,.8)
-                                font_size: '23px'
+                                font_size: 23
                                 text_size: self.width, self.height
                                 valign: 'bottom'
                                 halign: 'left'
 
                                 size_hint_y: None
-                                height: '30px'
+                                height: 30
 
                             Label: # tipe varian
                                 id: type_text
@@ -92,7 +93,7 @@
 
                                 font_name: 'assets/font/Roboto/Roboto-Bold.ttf'
                                 color: (129/255, 0, 0, 1)
-                                font_size: '16px'
+                                font_size: 16
                                 text_size: self.width, self.height
                                 valign: 'top'
                                 halign: 'left'
@@ -106,7 +107,7 @@
 
                                 size_hint: None, None
                                 width: self.minimum_width
-                                height: '40px'
+                                height: 40
 
                                 BoxLayout:
                                     id: rating_star
@@ -123,13 +124,13 @@
                                     text: self.parent.text
 
                                     color: (0,0,0,.6)
-                                    font_size: '15px'
+                                    font_size: 15
                                     font_name: 'assets/font/Roboto/Roboto-Medium.ttf'
 
                                     size: self.texture_size
                                     size_hint: None, None
-                                    width: '21px'
-                                    height: '21px'
+                                    width: 21
+                                    height: 21
                                     pos_hint: {'center_y':.5, 'right':1}
 
                         Label:
@@ -152,8 +153,8 @@
             Button:
                 id: back_button
                 size_hint: None, None
-                width: '135px'
-                height: '70px'
+                width: 135
+                height: 70
                 opacity: 0
 
                 background_normal: ''
@@ -169,5 +170,6 @@
                         source: 'assets/back_button.png'
                         pos: self.parent.pos
                         size: self.parent.size
+                        allow_stretch: True
 
                         pos_hint: {'center_x':.5}

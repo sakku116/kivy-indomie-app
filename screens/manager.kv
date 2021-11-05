@@ -1,4 +1,3 @@
-# (parent path dimulai dari folder main.py)
 ######## uix ########
 #:include uix/chooser_button.kv
 #:include uix/my_card.kv
@@ -10,6 +9,7 @@
 #:include screens/content_screen.kv
 
 ##############################
+# (parent path dimulai dari folder main.py)
 # include file yang berisi class untuk dipanggil sebagai referensi -
 # sama saja menulis ulang class seperti ReadMoreButton -
 # dibawah.
@@ -42,7 +42,7 @@
         BoxLayout:
             size_hint: None, None
             width: self.minimum_width
-            height: '65px'
+            height: 65
             pos_hint: {'center_x':.5, 'down':1}
 
             ReadMoreBtn:

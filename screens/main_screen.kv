@@ -9,7 +9,7 @@
             padding: 10
 
             size_hint: (1, None)
-            height: '75px'
+            height: 75
 
             BoxLayout:
                 orientation: 'vertical'
@@ -19,7 +19,7 @@
                     Label:
                         text: 'Selamat pagi,'
 
-                        font_size: '11.5px'
+                        font_size: 11.5
                         font_name: 'assets/font/Roboto/Roboto-Regular.ttf'
                         color: (0, 0, 0, 0.6)
 
@@ -34,7 +34,7 @@
                     Label:
                         text: 'Andre Rio!'
 
-                        font_size: '20px'
+                        font_size: 20
                         font_name: 'assets/font/Oswald-VariableFont_wght.ttf'
                         color: (0,0,0,1)
 
@@ -56,8 +56,8 @@
                         source: 'assets/profile pict.png'
 
                         size_hint: None, None
-                        width: '37.5px'
-                        height: '37.5px'
+                        width: 37.5
+                        height: 37.5
                         pos_hint: {'center_y': .5 , 'right':1}
 
         ScrollView:
@@ -69,7 +69,7 @@
                 orientation: 'vertical'
 
                 id: content_id
-                padding: [0,'5px',0,0] # left, top, right, bottom
+                padding: [0,5,0,0] # left, top, right, bottom
 
                 size_hint: 1, None
                 height: self.minimum_height
@@ -81,7 +81,7 @@
 
                 # TITLE
                 BoxLayout:
-                    padding: ['25px',0,'25px',0]
+                    padding: [25,0,25,0]
                     size_hint: 1, None
                     height: self.minimum_height
 
@@ -89,7 +89,7 @@
                         text: 'Paling Laris, Soal Rasa Gak Pernah Bohong !'
 
                         font_name: 'assets/font/Poppins/Poppins-Bold.ttf'
-                        font_size: '19px'
+                        font_size: 19
                         color: (0,0,0,1)
 
                         text_size: self.size # untuk menempelkan text ke paling kiri label (bukan tengah)
@@ -97,12 +97,12 @@
                         valign: 'top'
 
                         size_hint: 1, None
-                        height: '65px'
+                        height: 65
 
                 # HORIZONTAL BUTTON CHOOSER
                 BoxLayout:
                     size_hint: 1, None
-                    height: '75px'
+                    height: 75
                     pos_hint: {'center_y':1}
 
                     ScrollView:
@@ -120,10 +120,10 @@
                             id: horizontal_button
                             orientation: 'horizontal'
                             padding: [25,0,25,0]
-                            spacing: '25px'
+                            spacing: 25
 
                             size_hint: None, None
-                            height: '50px'
+                            height: 50
                             width: self.minimum_width # untuk meberi ukuran sesuai dengan berapa banyak elemen didalamnya
                             # properti minimum_width dapat digunakan selain pada label
 
@@ -166,7 +166,7 @@
                 # CARD
                 BoxLayout:
                     size_hint: 1, None
-                    height: '330px'
+                    height: 330
                     pos_hint: {'center_x': .5}
 
                     Carousel:
@@ -223,11 +223,11 @@
                 FloatLayout:
                     padding: [25,0,25,0]
                     size_hint: 1, None
-                    height: '35px'
+                    height: 35
 
                     BoxLayout:
                         orientation: 'horizontal'
-                        spacing: '7px'
+                        spacing: 7
 
                         size_hint: None, None
                         width: self.minimum_width
