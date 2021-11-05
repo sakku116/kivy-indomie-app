@@ -11,8 +11,9 @@
     color: (0,0,0,0)
 
     size_hint: None, None
-    width: '170px'
-    height: '37.5px'
+
+    width: 170
+    height: 37.5
     center_x: .5
 
     on_press:
@@ -46,7 +47,7 @@
         Color:
             rgba: (206/255, 18/255, 18/255, 0 if self.state == 'normal' else 1)
         Line:
-            #width: 1.0000005
+            width: 1
             rounded_rectangle: self.x, self.y, self.width, self.height, self.my_radius
 
     BoxLayout:
@@ -59,8 +60,8 @@
             padding: 4
 
             size_hint: None, None
-            width: '35px'
-            height: '29px'
+            width: 35
+            height: 29
             pos_hint: {'center_y':.5}
 
             canvas.before:
@@ -75,9 +76,10 @@
                 source: root.icon
                 pos: self.parent.pos
                 size: self.parent.size
+                allow_stretch: True
 
         Label: # TEXT
             text: root.text
-            font_size: '13px'
+            font_size: 13
             font_name: 'assets/font/Roboto/Roboto-Medium.ttf'
             color: (27/255, 23/255, 23/255, 1)

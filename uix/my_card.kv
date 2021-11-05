@@ -1,7 +1,7 @@
 <MyCard@FloatLayout>:
     # @FloatLayout
     size_hint: None, 1
-    width: '330px'
+    width: 330
     pos_hint: {'center_x': .5}
 
     # set attribut untuk diubah saat class dipanggil
@@ -18,8 +18,8 @@
         padding: [10,6,8,0]
 
         size_hint: None, None
-        width: '260px'
-        height: '290px'
+        width: 260
+        height: 290
         pos_hint: {'center_x': .5-self.my_elevation/700, 'center_y': .5}
 
         my_radius: 10
@@ -54,13 +54,13 @@
         FloatLayout:
             pos: self.parent.pos
             size_hint: 1, None
-            height: '185px'
+            height: 185
 
             Image:
                 source: root.product_preview_path
                 pos: self.parent.pos
                 size_hint: None, None
-                width: '165px'
+                width: 165
                 height: self.width
                 pos_hint: {'center_x':.5, 'center_y':.5}
 
@@ -75,7 +75,7 @@
                     pos: self.parent.pos
                     size_hint: None, None
                     allow_stretch: True
-                    width: '60px'
+                    width: 60
                     height: self.width
                     pos_hint: {'top':1, 'right':1}
 
@@ -94,20 +94,20 @@
 
                     font_name: 'assets/font/Poppins/Poppins-Bold.ttf'
                     color: (0,0,0,.8)
-                    font_size: '15px'
+                    font_size: 15
                     text_size: self.width, self.height
                     valign: 'bottom'
                     halign: 'left'
 
                     size_hint_y: None
-                    height: '30px'
+                    height: 30
 
                 Label: # tipe varian
                     text: root.type_text # text dari parent class
 
                     font_name: 'assets/font/Roboto/Roboto-Bold.ttf'
                     color: (129/255, 0, 0, 1)
-                    font_size: '13.5px'
+                    font_size: 13.5
                     text_size: self.width, self.height
                     valign: 'top'
                     halign: 'left'
@@ -126,25 +126,25 @@
 
                     size_hint: None, None
                     width: self.minimum_width
-                    height: '20px'
+                    height: 20
                     pos_hint: {'top':1, 'right':1}
 
                     Image:
                         source: 'assets/star.png'
 
                         size_hint: None, None
-                        width: '20px'
-                        height: '20px'
+                        width: 20
+                        height: self.width
 
                     Label:
                         text: root.rating
 
                         color: (0,0,0,.6)
-                        font_size: '14px'
+                        font_size: 14
                         font_name: 'assets/font/Roboto/Roboto-Medium.ttf'
 
                         size: self.texture_size
                         size_hint: None, None
-                        width: '20px'
-                        height: '20px'
+                        width: 20
+                        height: 20
                         pos_hint: {'center_y':.5}
