@@ -16,9 +16,9 @@ from kivy.uix.button import Button
 from kivy.uix.image import Image
 
 # default window size
-#Window.size = (350, 680)
+Window.size = (350, 680)
 # limit window size
-#Window.minimum_width, Window.minimum_height = Window.size
+Window.minimum_width, Window.minimum_height = Window.size
 #Window.borderless = True
 
 class ChooserButton(ToggleButton):
