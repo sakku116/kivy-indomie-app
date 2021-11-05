@@ -16,9 +16,9 @@ from kivy.uix.button import Button
 from kivy.uix.image import Image
 
 # default window size
-Window.size = (350, 680)
+#Window.size = (350, 680)
 # limit window size
-Window.minimum_width, Window.minimum_height = Window.size
+#Window.minimum_width, Window.minimum_height = Window.size
 #Window.borderless = True
 
 class ChooserButton(ToggleButton):
@@ -80,8 +80,8 @@ class Manager(Screen):
             for i in range(int(rate[0])):
                 star = Image(source = 'assets/star.png',
                     size_hint = (None, None),
-                    width = '15px',
-                    height = '15px',
+                    width = 15,
+                    height = 15,
                     pos_hint = {'center_y':.5},
                     allow_stretch = True)
 
@@ -91,8 +91,8 @@ class Manager(Screen):
                 if rate[1] == '5':
                     half_star = Image(source = 'assets/half star.png',
                         size_hint = (None, None),
-                        width = '15px',
-                        height = '15px',
+                        width = 15,
+                        height = 15,
                         pos_hint = {'center_y':.5},
                         allow_stretch = True)
 
@@ -157,18 +157,18 @@ class MainScreen(Screen):
 
         self.primary_color = 206/255, 18/255, 18/255, 1
 
+        # list id element
+        self.button_list = [self.ids.first_btn, self.ids.second_btn, self.ids.third_btn, self.ids.fourth_btn]
+        self.card_list = [self.ids.first_card, self.ids.second_card, self.ids.third_card, self.ids.fourth_card]
+        self.indicator_list = [self.ids.first_indicator, self.ids.second_indicator, self.ids.third_indicator, self.ids.fourth_indicator]
+
         # config indikator
         self.active_indicator_width = 20
         self.active_indicator_color = (206/255, 18/255, 18/255, 1)
         self.inactive_indicator_color = (0,0,0,.2)
 
-        self.ids.first_indicator.width += self.active_indicator_width-8
-        self.ids.first_indicator.my_color = self.active_indicator_color
-
-        # list id element
-        self.button_list = [self.ids.first_btn, self.ids.second_btn, self.ids.third_btn, self.ids.fourth_btn]
-        self.card_list = [self.ids.first_card, self.ids.second_card, self.ids.third_card, self.ids.fourth_card]
-        self.indicator_list = [self.ids.first_indicator, self.ids.second_indicator, self.ids.third_indicator, self.ids.fourth_indicator]
+        self.indicator_list[0].width += self.active_indicator_width-8
+        self.indicator_list[0].my_color = self.active_indicator_color
 
         # mengubah state dari btn pertama saat startup
         self.button_list[0].state = 'down'
