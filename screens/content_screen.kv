@@ -144,17 +144,18 @@
                             valign: 'top'
 
         # BACK_BUTTON
-        BoxLayout:
-            size_hint: None, None
-            width: self.minimum_width
-            height: self.minimum_height
+        FloatLayout:
+            size_hint: 1, None
+            height: 70
             pos_hint: {'top':1}
 
             Button:
                 id: back_button
+                pos: self.parent.pos
                 size_hint: None, None
                 width: 135
                 height: 70
+                pos_hint: {'center_y':.5}
                 opacity: 0
 
                 background_normal: ''
@@ -171,5 +172,3 @@
                         pos: self.parent.pos
                         size: self.parent.size
                         allow_stretch: True
-
-                        pos_hint: {'center_x':.5}
