@@ -1,8 +1,11 @@
 # "C:\py_venv\kivy_venv\scripts\activate"
 
 # konfigurasi untuk open gl dibawah versi 2
-#from kivy import Config
-#Config.set('graphics', 'multisamples', '0')
+'''
+from kivy import Config
+Config.set('graphics', 'multisamples', '0')
+import kivy
+kivy.require('2.0.0')'''
 
 from kivy.app import App
 from kivy.core.window import Window
@@ -20,6 +23,29 @@ Window.size = (350, 680)
 # limit window size
 Window.minimum_width, Window.minimum_height = Window.size
 #Window.borderless = True
+
+class ReadMoreBtn(Button):
+    def animate_on_press(self, target):
+        # TODO
+        anim = Animation(
+            width = (target.width + 4),
+            height = (target.height + 4),
+            duration = .05,
+            t = 'out_circ'
+        )
+        anim.start(target)
+
+    def animate_on_release(self, target):
+        self.default_width = self.width
+        self.default_height = self.height
+
+        anim2 = Animation(
+            width = self.default_width,
+            height = self.default_height,
+            duration = .3,
+            t = 'out_circ'
+        )
+        anim2.start(target)
 
 class ChooserButton(ToggleButton):
     def __init__(self, **kwargs):
@@ -117,6 +143,9 @@ class Manager(Screen):
         self.ids.float_btn.unbind(on_release = self.goto_content_screen)
 
     def goto_main_screen(self, *args):
+        # animate back button
+        anim2 = self.content_screen.animate_back_button_on_disapear()
+
         try:
             screen = self.first_screen.add_widget(self.main_screen)
         except:
@@ -129,9 +158,6 @@ class Manager(Screen):
             t = 'out_circ'
         )
         anim.start(self.content_screen.ids.content_screen_layout)
-
-        # animate back button
-        self.content_screen.animate_back_button_on_disapear()
 
         # menghapus content screen
         def remove_content(*args):
@@ -147,6 +173,7 @@ class Manager(Screen):
 
 class MainScreen(Screen):
     # set global variable untuk class lain
+    # karena variabel dalam init tidak bisa digunakan untuk global dalam kivy
     product_pict_path = StringProperty('')
     title_text = StringProperty('')
     type_text = StringProperty('')
@@ -230,6 +257,7 @@ class ContentScreen(Screen):
     def __init__(self, **kwargs):
         super(ContentScreen, self).__init__(**kwargs)
         self.ids.content_screen_layout.opacity = 0
+        #self.ids.back_button.my_direct = 2
 
     def animate_back_button_on_spawn(self):
         anim = Animation(
