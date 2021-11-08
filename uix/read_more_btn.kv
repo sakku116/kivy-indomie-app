@@ -1,36 +1,38 @@
-<ReadMoreBtn@Button>
+<ReadMoreBtn>
+    id: main
     ############ REQUIRES ###########
     icon: ''
     text: ''
-    #on_release: ''
+    on_press: root.animate_on_press(btn_image)
+    on_release: root.animate_on_release(btn_image)
     #################################
 
     color: (1,1,1,0)
 
     size_hint: None, None
-    width: 215
-    height: 40
+    width: 247
+    height: 67
     pos_hint: {'top':1}
 
     background_normal: ''
     background_color: (0,0,0,0)
 
-    canvas.after:
-        Color:
-            rgba: (1,1,1,0)
-        Rectangle:
-            size: self.size
-            pos: self.pos
-
     FloatLayout:
-        pos: root.parent.pos
-        size: root.parent.size
+        id: btn_image_layout
+        pos: self.parent.pos
+        size: self.parent.size
+        pos_hint: {'center_x':.5, 'center_y':.5}
 
         Image:
+            id: btn_image
             # button image
             source: 'assets/float button.png'
             pos: self.parent.pos
+            pos_hint: {'center_x':.5, 'center_y':.5}
             size: self.parent.size
+            size_hint: None, None
+            width: self.parent.width
+            height: self.parent.height
             allow_stretch: True
 
         FloatLayout:
@@ -48,7 +50,7 @@
 
             Image:
                 source: root.icon
-                size_hint: .2,.5
+                size_hint: .25,.5
                 pos_hint: {'right':.925, 'center_y':.57}
 
             #RippleButton:
