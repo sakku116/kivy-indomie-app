@@ -4,7 +4,9 @@
     icon: ''
     text: ''
     on_press: root.animate_on_press(btn_image)
-    on_release: root.animate_on_release(btn_image)
+    on_release:
+        root.animate_on_release(btn_image)
+        root.animate_icon(btn_icon)
     #################################
 
     color: (1,1,1,0)
@@ -41,6 +43,7 @@
 
             Label:
                 # text
+                id: btn_text
                 text: root.text
                 font_size: 13
                 font_name: 'assets/font/Poppins/Poppins-Medium.ttf'
@@ -49,29 +52,13 @@
                 size: self.parent.size
 
             Image:
+                id: btn_icon
                 source: root.icon
-                size_hint: .25,.5
-                pos_hint: {'right':.925, 'center_y':.57}
+                size_hint: None, None
+                my_size: 17
+                width: self.my_size
+                height: self.my_size
 
-            #RippleButton:
-                # hanya mengambil ripple efek
-                # bisa di transparankan
-                #pos: root.parent.pos
-                #size: root.parent.size
-                #background_normal: ''
-                #background_color: (0,0,0,0)
+                pos_hint: {'right':.83, 'center_y':.57}
 
-                #ripple_scale: 1
-                #ripple_func_in: 'out_cubic'
-                #ripple_func_out: 'out_circ'
-                #ripple_fade_from_alpha: .2
-                #ripple_fade_to_alpha: .2
-                #ripple_duration_out: .8
-
-                #canvas.before:
-                    #Color:
-                        #rgba: (0,0,0,0)
-                    #RoundedRectangle:
-                        #pos: self.pos
-                        #size: self.size
-                        #radius: [self.height/2]
+                allow_stretch:  True
