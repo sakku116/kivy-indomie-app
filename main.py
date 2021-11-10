@@ -1,8 +1,8 @@
 # "C:\py_venv\kivy_venv\scripts\activate"
 
 # konfigurasi untuk open gl dibawah versi 2
-'''
-from kivy import Config
+
+'''from kivy import Config
 Config.set('graphics', 'multisamples', '0')
 import kivy
 kivy.require('2.0.0')'''
@@ -26,26 +26,36 @@ Window.minimum_width, Window.minimum_height = Window.size
 
 class ReadMoreBtn(Button):
     def animate_on_press(self, target):
-        # TODO
         anim = Animation(
-            width = (target.width + 4),
-            height = (target.height + 4),
-            duration = .05,
+            width = (target.width - 3),
+            height = (target.height - 3),
+            duration = .04,
             t = 'out_circ'
-        )
-        anim.start(target)
+        ).start(target)
 
     def animate_on_release(self, target):
-        self.default_width = self.width
-        self.default_height = self.height
+        default_width = self.width
+        default_height = self.height
 
         anim2 = Animation(
-            width = self.default_width,
-            height = self.default_height,
+            width = default_width,
+            height = default_height,
+            duration = .2,
+            t = 'out_circ'
+        ).start(target)
+
+    def animate_icon(self, target):
+        default_size = 17
+        anim = Animation(
+            my_size = (target.my_size+2),
+            duration = .06,
+        )
+        anim += Animation(
+            my_size = default_size,
             duration = .3,
             t = 'out_circ'
         )
-        anim2.start(target)
+        anim.start(target)
 
 class ChooserButton(ToggleButton):
     def __init__(self, **kwargs):
@@ -98,7 +108,7 @@ class Manager(Screen):
             self.content_screen.animate_back_button_on_spawn()
         anim.bind(on_complete = remove_main)
 
-        ######### konfigurasi content screen ########
+        ######### konfigurasi content screen #########
 
         def add_star_image_total(num):
             rate = num.split('.')
@@ -173,7 +183,7 @@ class Manager(Screen):
 
 class MainScreen(Screen):
     # set global variable untuk class lain
-    # karena variabel dalam init tidak bisa digunakan untuk global dalam kivy
+    # karena variabel dalam init+super() tidak bisa digunakan untuk global dalam kivy
     product_pict_path = StringProperty('')
     title_text = StringProperty('')
     type_text = StringProperty('')
