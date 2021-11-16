@@ -18,59 +18,6 @@ from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 
-# default window size
-Window.size = (350, 680)
-# limit window size
-Window.minimum_width, Window.minimum_height = Window.size
-#Window.borderless = True
-
-class ReadMoreBtn(Button):
-    def animate_on_press(self, target):
-        anim = Animation(
-            width = (target.width - 3),
-            height = (target.height - 3),
-            duration = .04,
-            t = 'out_circ'
-        ).start(target)
-
-    def animate_on_release(self, target):
-        default_width = self.width
-        default_height = self.height
-
-        anim2 = Animation(
-            width = default_width,
-            height = default_height,
-            duration = .2,
-            t = 'out_circ'
-        ).start(target)
-
-    def animate_icon(self, target):
-        default_size = 17
-        anim = Animation(
-            my_size = (target.my_size+2),
-            duration = .06,
-        )
-        anim += Animation(
-            my_size = default_size,
-            duration = .3,
-            t = 'out_circ'
-        )
-        anim.start(target)
-
-class ChooserButton(ToggleButton):
-    def __init__(self, **kwargs):
-        super(ChooserButton, self).__init__(**kwargs)
-        self.untouch_color = (255/255, 224/255, 224/255, 1) # warna default
-
-    def animate_touch(self, state):
-        anim = Animation(my_color = self.untouch_color,
-            duration = .2, t = 'out_circ')
-
-        if state == 'down':
-            anim.start(self)
-        else:
-            pass
-
 class Manager(Screen):
     def __init__(self, **kwargs):
         super(Manager, self).__init__(**kwargs)
@@ -194,24 +141,30 @@ class MainScreen(Screen):
 
         self.primary_color = 206/255, 18/255, 18/255, 1
 
-        # list id element
-        self.button_list = [self.ids.first_btn, self.ids.second_btn, self.ids.third_btn, self.ids.fourth_btn]
-        self.card_list = [self.ids.first_card, self.ids.second_card, self.ids.third_card, self.ids.fourth_card]
-        self.indicator_list = [self.ids.first_indicator, self.ids.second_indicator, self.ids.third_indicator, self.ids.fourth_indicator]
+        # LIST ID ELEMEN
+        # attribute 'children' berisi list yang reversed dari container
+        # sehingga index 0 = -1
+        # atau jika diperlukan untuk slicing list menggunakan rumus 0-(index asli+1)
 
-        # config indikator
+        # untuk carousel childrens bisa menggunakan 'slides'
+        # dengan list yang tidak reversed
+        self.button_list = self.ids.btn_container.children
+        self.card_list = self.ids.card_carousel.slides
+        self.indicator_list = self.ids.indicator_container.children
+
+        # KONFIGURASI INDIKATOR
         self.active_indicator_width = 20
         self.active_indicator_color = (206/255, 18/255, 18/255, 1)
         self.inactive_indicator_color = (0,0,0,.2)
 
-        self.indicator_list[0].width += self.active_indicator_width-8
-        self.indicator_list[0].my_color = self.active_indicator_color
+        self.indicator_list[-1].width = self.active_indicator_width-8
+        self.indicator_list[-1].my_color = self.active_indicator_color
 
         # mengubah state dari btn pertama saat startup
-        self.button_list[0].state = 'down'
+        self.button_list[-1].state = 'down'
 
         # list dari indikator index untuk di animasikan
-        self.active_indicator = [self.indicator_list[0],'']
+        self.active_indicator = [self.indicator_list[-1],'']
 
         # set default global varible value
         self.product_pict_path = self.card_list[0].product_preview_path
@@ -228,7 +181,7 @@ class MainScreen(Screen):
 
         # dan update index 1 dengan yang baru,
         # yang kemudian akan menggantikan index 0 selanjutnya saat event berjalan lagi
-        self.active_indicator[1] = self.indicator_list[index]
+        self.active_indicator[1] = self.indicator_list[0-(index+1)]
 
         # anim1 untuk animasi index 0
         anim1 = Animation(
@@ -284,10 +237,61 @@ class ContentScreen(Screen):
         )
         anim.start(self.ids.back_button)
 
-kv = Builder.load_file('screens/manager.kv')
+class ReadMoreBtn(Button):
+    def animate_on_press(self, target):
+        anim = Animation(
+            width = (target.width - 3),
+            height = (target.height - 3),
+            duration = .04,
+            t = 'out_circ'
+        ).start(target)
+
+    def animate_on_release(self, target):
+        default_width = self.width
+        default_height = self.height
+
+        anim2 = Animation(
+            width = default_width,
+            height = default_height,
+            duration = .2,
+            t = 'out_circ'
+        ).start(target)
+
+    def animate_icon(self, target):
+        default_size = 17
+        anim = Animation(
+            my_size = (target.my_size+2),
+            duration = .06,
+        )
+        anim += Animation(
+            my_size = default_size,
+            duration = .3,
+            t = 'out_circ'
+        )
+        anim.start(target)
+
+class ChooserButton(ToggleButton):
+    def __init__(self, **kwargs):
+        super(ChooserButton, self).__init__(**kwargs)
+        self.untouch_color = (255/255, 224/255, 224/255, 1) # warna default
+
+    def animate_touch(self, state):
+        anim = Animation(my_color = self.untouch_color,
+            duration = .2, t = 'out_circ')
+
+        if state == 'down':
+            anim.start(self)
+        else:
+            pass
 
 class MainApp(App):
     def build(self):
+        kv = Builder.load_file('screens/manager.kv')
+        # default window size
+        Window.size = (350, 680)
+        # limit window size
+        Window.minimum_width, Window.minimum_height = Window.size
+        #Window.borderless = True
         return Manager()
 
 if __name__ == '__main__':
