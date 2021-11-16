@@ -117,7 +117,7 @@
                         bar_inactive_color: (1,1,1,0)
 
                         BoxLayout:
-                            id: horizontal_button
+                            id: btn_container
                             orientation: 'horizontal'
                             padding: [25,0,25,0]
                             spacing: 25
@@ -128,7 +128,6 @@
                             # properti minimum_width dapat digunakan selain pada label
 
                             ChooserButton:
-                                id: first_btn
                                 text: 'Rasa Original'
                                 icon: 'assets/button_icon/rasa_ori.png'
 
@@ -137,7 +136,6 @@
                                     root.activate_indicator(0)
 
                             ChooserButton:
-                                id: second_btn
                                 text: 'Rasa Pedas'
                                 icon: 'assets/button_icon/pedas.png'
 
@@ -146,7 +144,6 @@
                                     root.activate_indicator(1)
 
                             ChooserButton:
-                                id: third_btn
                                 text: 'Rasa Kari Ayam'
                                 icon: 'assets/button_icon/kari_ayam.png'
 
@@ -155,7 +152,6 @@
                                     root.activate_indicator(2)
 
                             ChooserButton:
-                                id: fourth_btn
                                 text: 'Rasa Rendang'
                                 icon: 'assets/button_icon/rendang.png'
 
@@ -174,21 +170,25 @@
                         id: card_carousel
                         pos_hint: {'center_x':.5, 'center_y': .5}
 
-                        anim_move_duration: .4
+                        anim_move_duration: .3
                         anim_type: 'out_circ'
 
                         on_current_slide:
                             # menetralkan semua choser btn ke normal
-                            for i in range(0, len(root.button_list)): root.button_list[i].state = 'normal'
+                            for i in range(0, len(btn_container.children)): btn_container.children[i].state = 'normal'
+                            
                             # dan mengubah state choser btn[index] ke down
-                            root.button_list[self.index].state = 'down'
+                            btn_container.children[0-(self.index+1)].state = 'down'
+                            # attribut childern merupakan list terbalik
+                            # sehingga harus menggunakan 0-(indexasli+1) untuk mereverse
+
                             # control indicator
                             root.activate_indicator(self.index)
+                            
                             # scrap element dari card terkini
                             root.current_product_element(self.slides[self.index].product_preview_path, self.slides[self.index].title_text, self.slides[self.index].type_text, self.slides[self.index].rating)
 
                         MyCard:
-                            id: first_card
                             title_text: 'Indomie Original'
 
                             type_text: 'GORENG'
@@ -196,7 +196,6 @@
                             rating: '4.5'
 
                         MyCard:
-                            id: second_card
                             title_text: 'Indomie Pedas'
 
                             type_text: 'GORENG'
@@ -204,7 +203,6 @@
                             rating: '4'
 
                         MyCard:
-                            id: third_card
                             title_text: 'Indomie Kari Ayam'
 
                             type_text: 'KUAH'
@@ -212,7 +210,6 @@
                             rating: '3.5'
 
                         MyCard:
-                            id: fourth_card
                             title_text: 'Indomie Rendang'
 
                             type_text: 'GORENG'
@@ -226,6 +223,7 @@
                     height: 35
 
                     BoxLayout:
+                        id: indicator_container
                         orientation: 'horizontal'
                         spacing: 7
 
