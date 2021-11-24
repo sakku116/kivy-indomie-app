@@ -1,7 +1,9 @@
 # Indomie-App
 This is my first slicing app project for [Andre Rio](https://github.com/andregans)'s indomie app design.
 ### Preview
-<img src="/preview/image.PNG" alt="drawing" width="300"/> <img src="/preview/image2.PNG" alt="drawing" width="300"/>
+<img src="/preview/image.PNG" alt="drawing" width="300"/> 
+<img src="/preview/image2.PNG" alt="drawing" width="300"/>
+<img src="/preview/image3.PNG" alt="drawing" width="300"/>
 ## Requires
 - python 3.6+
 - kivy 2.0.0
