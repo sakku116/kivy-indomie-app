@@ -1,0 +1,27 @@
+<ShareButton@Button>
+    text: ''
+    source: ''
+
+    size_hint: None, None
+    width: 50
+    height: self.width
+
+    background_color: (0,0,0,0)
+    background_normal: ''
+    radius: 10
+
+    canvas.before:
+        Color: 
+            rgba: (1,1,1,0 if self.state == 'normal' else 1)
+        RoundedRectangle:
+            pos: self.center_x - (self.width+self.width/4)/2, self.center_y - (self.height+self.height/4)/2
+            size: [self.width+self.width/4, self.height+self.height/4]
+            radius: [self.radius]
+
+    Image:
+        source: root.source
+        allow_stretch: True
+        
+        pos: self.parent.pos
+        size: self.parent.size
+

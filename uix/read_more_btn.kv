@@ -3,10 +3,10 @@
     ############ REQUIRES ###########
     icon: ''
     text: ''
-    on_press: root.animate_on_press(btn_image)
+    on_press: root.animateOnPress(btn_image)
     on_release:
-        root.animate_on_release(btn_image)
-        root.animate_icon(btn_icon)
+        root.animateOnRelease(btn_image)
+        root.animateIcon(btn_icon)
     #################################
 
     color: (1,1,1,0)
@@ -14,7 +14,7 @@
     size_hint: None, None
     width: 247
     height: 67
-    pos_hint: {'top':1}
+    pos_hint: {'top':1, 'center_x':.5}
 
     background_normal: ''
     background_color: (0,0,0,0)
