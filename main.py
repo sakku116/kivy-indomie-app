@@ -255,15 +255,17 @@ class ContentScreen(Screen):
     def animateBackButtonOnSpawn(self):
         anim = Animation(
             opacity = 1,
-            duration = .4,
+            my_left = 1,
+            duration = .3,
+            t = 'out_circ'
         )
         anim.start(self.ids.back_button)
 
     def animateBackButtonOnDisapear(self):
         anim = Animation(
-            opacity = 0,
-            duration = .25,
-            t = 'out_circ'
+            my_left = -200,
+            duration = .3,
+            t = 'in_out_back'
         )
         anim.start(self.ids.back_button)
 
@@ -275,8 +277,10 @@ class ContentScreen(Screen):
 
     def animateScreenCover(self):
         if self.ids.share_screen.my_bottom == 0:
+            self.ids.main_scroll_view.enable_scroll = True
             opacity = 0
         else:
+            self.ids.main_scroll_view.enable_scroll = False
             opacity = .4
 
         anim = Animation(
@@ -287,14 +291,10 @@ class ContentScreen(Screen):
 
     def animateShareScreen(self, *args):
         if self.ids.share_screen.my_bottom != 0:
-            # tampilkan
             btm = 0
-            self.ids.main_scroll_view.enable_scroll = False
             self.animateScreenCover()
         elif self.ids.share_screen.my_bottom == 0:
-            # hilangkan
             btm = -.5
-            self.ids.main_scroll_view.enable_scroll = True
             self.animateScreenCover()
 
         anim = Animation(
