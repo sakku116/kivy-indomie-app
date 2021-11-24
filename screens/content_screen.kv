@@ -192,7 +192,8 @@
 
             Button:
                 id: back_button
-                pos: self.parent.pos
+                my_left: -20
+                pos: self.my_left, self.parent.pos[1]
                 size_hint: None, None
                 width: 135
                 height: 70
@@ -211,5 +212,6 @@
                     Image:
                         source: 'assets/back_button.png'
                         pos: self.parent.pos
+                        pos_hint: {'center_x':.5}
                         size: self.parent.size
                         allow_stretch: True
