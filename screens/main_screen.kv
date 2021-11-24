@@ -133,7 +133,7 @@
 
                                 on_press:
                                     card_carousel.load_slide(card_carousel.slides[0])
-                                    root.activate_indicator(0)
+                                    root.activateIndicator(0)
 
                             ChooserButton:
                                 text: 'Rasa Pedas'
@@ -141,7 +141,7 @@
 
                                 on_press:
                                     card_carousel.load_slide(card_carousel.slides[1])
-                                    root.activate_indicator(1)
+                                    root.activateIndicator(1)
 
                             ChooserButton:
                                 text: 'Rasa Kari Ayam'
@@ -149,7 +149,7 @@
 
                                 on_press:
                                     card_carousel.load_slide(card_carousel.slides[2])
-                                    root.activate_indicator(2)
+                                    root.activateIndicator(2)
 
                             ChooserButton:
                                 text: 'Rasa Rendang'
@@ -157,7 +157,7 @@
 
                                 on_press:
                                     card_carousel.load_slide(card_carousel.slides[3])
-                                    root.activate_indicator(3)
+                                    root.activateIndicator(3)
 
                 # CARD
                 BoxLayout:
@@ -183,10 +183,10 @@
                             # sehingga harus menggunakan 0-(indexasli+1) untuk mereverse
 
                             # control indicator
-                            root.activate_indicator(self.index)
+                            root.activateIndicator(self.index)
                             
                             # scrap element dari card terkini
-                            root.current_product_element(self.slides[self.index].product_preview_path, self.slides[self.index].title_text, self.slides[self.index].type_text, self.slides[self.index].rating)
+                            root.currentProductElement(self.slides[self.index].product_preview_path, self.slides[self.index].title_text, self.slides[self.index].type_text, self.slides[self.index].rating)
 
                         MyCard:
                             title_text: 'Indomie Original'
@@ -231,14 +231,5 @@
                         width: self.minimum_width
                         height: self.minimum_height
                         pos_hint: {'center_x': .5, 'down':1}
-
-                        MyIndicator:
-                            id: first_indicator
-                        MyIndicator:
-                            id: second_indicator
-                        MyIndicator:
-                            id: third_indicator
-                        MyIndicator:
-                            id: fourth_indicator
 
         # FLOATING BUTTON (read more)

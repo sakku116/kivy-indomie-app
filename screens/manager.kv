@@ -3,6 +3,7 @@
 #:include uix/my_card.kv
 #:include uix/my_indicator.kv
 #:include uix/read_more_btn.kv
+#:include uix/share_btn.kv
 
 ######## SCREENS ########
 #:include screens/main_screen.kv
@@ -47,5 +48,5 @@
 
             ReadMoreBtn:
                 id: float_btn
-                text: 'Lihat Selengkapnya'
-                icon: 'assets/arrow.png'
+                text: root.float_btn_text
+                icon: root.float_btn_icon

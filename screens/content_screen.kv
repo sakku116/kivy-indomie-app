@@ -24,7 +24,9 @@
                     pos: [self.x, self.y]
 
             ScrollView:
-                do_scroll_y: True
+                id: main_scroll_view
+                enable_scroll: True
+                do_scroll_y: self.enable_scroll
                 do_scroll_x: False
 
                 BoxLayout:
@@ -45,7 +47,7 @@
                             size_hint: .85,.85
                             allow_stretch: True
 
-                            pos_hint: {'center_y':.425}
+                            pos_hint: {'center_y':.425, 'center_x':.5}
 
                     # CONTENT
                     BoxLayout:
@@ -143,6 +145,45 @@
                             halign: 'left'
                             valign: 'top'
 
+        BoxLayout:
+            id: screen_cover
+            size: root.width, root.height
+            opacity: 0
+            canvas.before:
+                Color:  
+                    rgba: (0,0,0,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+        StackLayout:
+            id: share_screen
+            orientation: 'lr-tb' # left to right, top to bottom
+            padding: [25,20,25,60]
+            spacing: 30
+
+            size_hint_y: None
+            height: self.minimum_height
+            my_bottom: -.5
+            pos_hint: {'y':self.my_bottom}
+
+            radius: 15
+
+            canvas.before:
+                Color:
+                    rgba: (255/255, 224/255, 224/255, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [self.radius, self.radius, 0, 0]
+
+            ShareButton:
+                source: 'assets/socmed/fb.png'
+            ShareButton:
+                source: 'assets/socmed/wa.png'
+            ShareButton:
+                source: 'assets/socmed/ig.png'
+
         # BACK_BUTTON
         FloatLayout:
             size_hint: 1, None
@@ -161,7 +202,7 @@
                 background_normal: ''
                 background_color: (0,0,0,0)
 
-                on_release: app.root.goto_main_screen()
+                on_release: app.root.gotoMainScreen()
 
                 BoxLayout:
                     pos: self.parent.pos
