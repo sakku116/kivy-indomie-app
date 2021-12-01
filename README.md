@@ -6,7 +6,7 @@ This is my first slicing app project for [Andre Rio](https://github.com/andregan
 - python 3.6+
 - kivy 2.0.0
 ## How To Run the Code
-kivy can be used on multiple platforms, to run the code on desktop just run it with python:
+kivy can be used on multiple platforms, to run the code on windows/linux just run it with python that already installed kivy in it:
 ``` 
 python main.py
 ```
