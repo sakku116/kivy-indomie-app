@@ -6,12 +6,14 @@ This is my first slicing app project for [Andre Rio](https://github.com/andregan
 - python 3.6+
 - kivy 2.0.0
 ## How To Run the Code
-kivy can be used on multiple platforms, to run the code on windows/linux just run it with python that already installed kivy in it:
-``` 
-python main.py
-```
-but to run this code on android you need to use the `Kivy Launcher` app.
->you can use `Pyinstaller package` to package this app as standalone app on windows, but you need `Buildozer` to package this app on android.
+- (Kivy can be used on multiple platforms).
+
+  To run the code on <b>windows/linux</b> just run it with python that already installed kivy in it:
+  ``` 
+  python main.py
+  ```
+  but to run this code on <b>android</b> you need to use the `Kivy Launcher` app.
+- you can use `Pyinstaller package` to package this code as standalone app <b>on windows</b>, but you need `Buildozer` to package this code as standalone app <b>on android</b>.
 ## Credits
 1. UI/UX design by [Andre Rio](https://github.com/andregans)
 2. some icons from [Flaticon](https://www.flaticon.com/) (see `assets/button_icon/credits.txt` for details)
