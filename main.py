@@ -1,5 +1,9 @@
 # "C:\py_venv\kivy_venv\scripts\activate"
 
+# untuk keperluan packaging ke executable onefile
+import os, sys
+from kivy.resources import resource_add_path, resource_find
+
 # konfigurasi untuk open gl dibawah versi 2
 '''
 from kivy import Config
@@ -15,7 +19,7 @@ from kivy.animation import Animation
 from kivy.properties import StringProperty
 
 from kivy.uix.screenmanager import Screen
-from kivy.uix.togglebutton import ToggleButton 
+from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.label import Label
@@ -154,7 +158,7 @@ class MainScreen(Screen):
     set global variable untuk class lain
     karena variabel dalam init+super() tidak bisa digunakan untuk global dalam kivy
     '''
-    
+
     product_pict_path = StringProperty('')
     title_text = StringProperty('')
     type_text = StringProperty('')
@@ -272,22 +276,8 @@ class ContentScreen(Screen):
     def shareScreenState(self):
         if self.ids.share_screen.my_bottom == 0:
             return False
-        else: 
-            return True
-
-    def animateScreenCover(self):
-        if self.ids.share_screen.my_bottom == 0:
-            self.ids.main_scroll_view.enable_scroll = True
-            opacity = 0
         else:
-            self.ids.main_scroll_view.enable_scroll = False
-            opacity = .4
-
-        anim = Animation(
-            opacity = opacity,
-            duration = .4,
-            t = 'out_circ'
-        ).start(self.ids.screen_cover)
+            return True
 
     def animateShareScreen(self, *args):
         if self.ids.share_screen.my_bottom != 0:
@@ -303,6 +293,20 @@ class ContentScreen(Screen):
             t = 'out_circ'
         ).start(self.ids.share_screen)
 
+    def animateScreenCover(self):
+        if self.ids.share_screen.my_bottom == 0:
+            self.ids.main_scroll_view.enable_scroll = True
+            opacity = 0
+        else:
+            self.ids.main_scroll_view.enable_scroll = False
+            opacity = .4
+
+        anim = Animation(
+            opacity = opacity,
+            duration = .4,
+            t = 'out_circ'
+        ).start(self.ids.screen_cover)
+
     def closeShareScreen(self, *args):
         if self.ids.share_screen.my_bottom == 0:
             anim = Animation(
@@ -310,12 +314,7 @@ class ContentScreen(Screen):
                 duration = .5,
                 t = 'out_circ'
             ).start(self.ids.share_screen)
-
-            anim2 = Animation(
-                opacity = 0,
-                duration = .25,
-                t = 'out_circ'
-            ).start(self.ids.screen_cover)
+            self.animateScreenCover()
         else:
             pass
 
@@ -383,4 +382,6 @@ class IndomieApp(App):
         return Manager()
 
 if __name__ == '__main__':
+    if hasattr(sys, '_MEIPASS'):
+        resource_add_path(os.path.join(sys._MEIPASS))
     IndomieApp().run()
