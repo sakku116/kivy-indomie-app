@@ -1,6 +1,30 @@
 # -*- mode: python ; coding: utf-8 -*-
-# package aplikasi menjadi standalone+onfile dengan 
-# membundle beberapa directory yang dibutuhkan
+
+'''
+PACKAGE APLIKASI MENJADI STANDALONE+ONFILE DENGAN 
+MEMBUNDLE BEBERAPA DIRECTORY YANG DIBUTUHKAN
+====================================================
+
+direkomendasikan melakukan packaging menggunakan python3.8(support win 7).
+jika menggunakan 3.9(sudah tidak support win7) 
+maka akan terjadi missing "api-ms-win-core-path-l1-1-0.dll" 
+(yang hanya support win8 keatas) pada saat dijalankan di win7
+====================================================
+
+dalam file main.py tambahkan beberapa kode:
+#----------------------------------------------------#
+import os, sys
+from kivy.resources import resource_add_path, resource_find
+#----------------------------------------------------#
+
+dan didalam "if __name__ == '__main__':"
+tambahkan:
+#----------------------------------------------------#
+if hasattr(sys, '_MEIPASS'):
+    resource_add_path(os.path.join(sys._MEIPASS))
+#----------------------------------------------------#
+
+'''
 
 from kivy_deps import sdl2, glew
 
@@ -25,12 +49,12 @@ a = Analysis(['main.py'],
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 
-# tambahkan project path string kedalam paramater tree
+# tambahkan project path string kedalam paramater 'tree'
 # seperti
-# 'D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indomie-App-dev\\'
-# dan ubah parameter name menjadi nama aplikasi yang dinginkan
+# 'path\\to\\project\\folder\\'
+# dan ubah parameter 'name' menjadi nama aplikasi yang dinginkan
 
-exe = EXE(pyz, Tree('D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indomie-App-dev2\\'),
+exe = EXE(pyz, Tree('D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indomie-App-dev\\'),
           a.scripts,
           a.binaries,
           a.zipfiles,
@@ -49,17 +73,3 @@ exe = EXE(pyz, Tree('D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indo
           target_arch=None,
           codesign_identity=None,
           entitlements_file=None )
-
-'''
-dalam file main.py tambahkan beberapa kode
-
-import os, sys
-from kivy.resources import resource_add_path, resource_find
-
-dan 
-
-if hasattr(sys, '_MEIPASS'):
-    resource_add_path(os.path.join(sys._MEIPASS))
-
-didalam if __name__ == '__main__':
-'''
