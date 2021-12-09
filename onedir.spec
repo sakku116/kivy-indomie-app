@@ -76,7 +76,7 @@ exe = EXE(pyz,
 # 'path\\to\\project\\folder\\'
 # dan ubah parameter 'name' menjadi nama aplikasi yang dinginkan
 
-coll = COLLECT(exe, Tree('D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indomie-App-dev\\'),
+coll = COLLECT(exe, Tree('D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indomie-App-Main\\'),
                a.binaries,
                a.zipfiles,
                a.datas, 
