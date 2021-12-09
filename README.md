@@ -1,15 +1,15 @@
 # Indomie-App
 This is my first slicing app project for [Andre Rio](https://github.com/andregans)'s indomie app design.
 
-### Preview (windows)
+## Preview (windows)
 > See <b>releases</b> to [download](https://github.com/sakku116/indomie-app/releases) preview.exe
 
 <img src="/preview/image.PNG" alt="drawing" width="230"/> <img src="/preview/image2.PNG" alt="drawing" width="230"/> <img src="/preview/image3.PNG" alt="drawing" width="230"/>
-### Requires
+## Requires
 - python 3.6+
 - kivy 2.0.0
 
-### How To Run the Code
+## How To Run the Code
 (Kivy can be used on multiple platforms).
 
 - To run the code on <b>windows/linux</b> just run it with python that already installed kivy in it:
@@ -19,7 +19,7 @@ This is my first slicing app project for [Andre Rio](https://github.com/andregan
   
 - But to run this code on <b>android</b> you need to use the <b>Kivy Launcher</b> app.
 
-### How To Package the Code
+## How To Package the Code
 - Use <b>PyInstaller</b> to package this code to .exe file.
   * Install pyinstaller in your python.
   * Then activate the virtual env if you using venv.
@@ -33,7 +33,7 @@ This is my first slicing app project for [Andre Rio](https://github.com/andregan
 
 - use <b>Buildozer</b> to package this code to .apk file
   
-### Credits
+## Credits
 1. UI/UX design by [Andre Rio](https://github.com/andregans)
 2. some icons from [Flaticon](https://www.flaticon.com/) (see `assets/button_icon/credits.txt` for details)
 
