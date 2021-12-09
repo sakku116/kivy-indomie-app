@@ -4,7 +4,7 @@ This is my first slicing app project for [Andre Rio](https://github.com/andregan
 ### Preview (windows)
 > See <b>releases</b> to [download](https://github.com/sakku116/indomie-app/releases) preview.exe
 
-<img src="/preview/image.PNG" alt="drawing" width="250"/> <img src="/preview/image2.PNG" alt="drawing" width="250"/> <img src="/preview/image3.PNG" alt="drawing" width="250"/>
+<img src="/preview/image.PNG" alt="drawing" width="230"/> <img src="/preview/image2.PNG" alt="drawing" width="230"/> <img src="/preview/image3.PNG" alt="drawing" width="230"/>
 ### Requires
 - python 3.6+
 - kivy 2.0.0
