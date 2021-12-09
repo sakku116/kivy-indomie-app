@@ -61,7 +61,7 @@ pyz = PYZ(a.pure, a.zipped_data,
 # 'path\\to\\project\\folder\\'
 # dan ubah parameter 'name' menjadi nama aplikasi yang dinginkan
 
-exe = EXE(pyz, Tree('D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indomie-App-dev\\'),
+exe = EXE(pyz, Tree('D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indomie-App-Main\\'),
           a.scripts,
           a.binaries,
           a.zipfiles,
