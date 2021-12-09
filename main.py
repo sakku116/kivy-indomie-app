@@ -5,12 +5,13 @@ import os, sys
 from kivy.resources import resource_add_path, resource_find
 
 # konfigurasi untuk open gl dibawah versi 2
-
+'''
 from kivy import Config
 Config.set('graphics', 'multisamples', '0')
 
 import kivy
 kivy.require('2.0.0')
+'''
 
 from kivy.app import App
 from kivy.core.window import Window
