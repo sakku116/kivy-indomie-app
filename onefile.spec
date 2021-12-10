@@ -59,9 +59,10 @@ pyz = PYZ(a.pure, a.zipped_data,
 # tambahkan project path string kedalam paramater 'tree'
 # seperti
 # 'path\\to\\project\\folder\\'
+# atau '.\\' jika file .spec ini terletak pada folder yang dituju
 # dan ubah parameter 'name' menjadi nama aplikasi yang dinginkan
 
-exe = EXE(pyz, Tree('D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indomie-App-Main\\'),
+exe = EXE(pyz, Tree('.\\'),
           a.scripts,
           a.binaries,
           a.zipfiles,

@@ -74,9 +74,10 @@ exe = EXE(pyz,
 # tambahkan project path string kedalam paramater 'tree'
 # seperti
 # 'path\\to\\project\\folder\\'
+# atau '.\\' jika file .spec ini terletak pada folder yang dituju
 # dan ubah parameter 'name' menjadi nama aplikasi yang dinginkan
 
-coll = COLLECT(exe, Tree('D:\\Ky Project\\coding-project\\Python\\Kivy\\Slicing\\Indomie-App-Main\\'),
+coll = COLLECT(exe, Tree('.\\'),
                a.binaries,
                a.zipfiles,
                a.datas, 
