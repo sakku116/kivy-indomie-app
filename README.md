@@ -35,7 +35,7 @@ This is my first slicing app project for [Andre Rio](https://github.com/andregan
 - use <b>Buildozer</b> to package this code to <b>.apk</b> file
   
 ## Credits
-1. UI/UX design by [Andre Rio](https://github.com/andregans)
+1. UI/UX design by [Andre Rio](https://github.com/andregans) (https://dribbble.com/shots/15981895-App-Design-Indomie)
 2. some icons from [Flaticon](https://www.flaticon.com/) (see `assets/button_icon/credits.txt` for details)
 3. Indomie
 (dm me via [Instagram](https://www.instagram.com/sakku_116/) for credits/removal)
